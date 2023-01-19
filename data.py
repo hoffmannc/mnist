@@ -16,12 +16,12 @@ def mnist():
     train_labels, test_labels = np.empty([0]), np.empty([0])
 
     for file in trainfile:
-        data = np.load(path + file)
+        data = np.load(_PATH_DATA + file)
         train_images = np.concatenate([train_images, data["images"]])
         train_labels = np.concatenate([train_labels, data["labels"]])
 
     for file in testfile:
-        data = np.load(path + file)
+        data = np.load(_PATH_DATA + file)
         test_images = np.concatenate([test_images, data["images"]])
         test_labels = np.concatenate([test_labels, data["labels"]])
 
