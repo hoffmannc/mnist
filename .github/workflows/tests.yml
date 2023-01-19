@@ -1,6 +1,7 @@
 name: testing
-on: push
-  branches: [main, actions]
+on:
+  push:
+    branches: [main, actions]
 jobs:
   test_code:
     runs-on: ubuntu-latest
