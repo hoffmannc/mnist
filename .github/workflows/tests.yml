@@ -1,0 +1,10 @@
+name: testing
+on: push
+  branches: [main, actions]
+jobs:
+  test_code:
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v2
+      run: pip install -r requirements.txt
+      run: pytest tests/
