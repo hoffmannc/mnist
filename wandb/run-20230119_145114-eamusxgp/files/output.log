@@ -1,0 +1,60 @@
+
+1
+0.004938024096190929
+2
+0.0016645976575091481
+3
+0.001201736624352634
+4
+0.0003764260036405176
+5
+0.00032794984872452915
+6
+0.00010173731425311416
+7
+3.0187598895281553e-05
+8
+1.172683187178336e-05
+9
+5.017742660129443e-05
+10
+3.874299636663636e-07
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m plotly is required to log interactive plots, install with: `pip install plotly` or convert the plot to an image with `wandb.Image(plt)`
+Traceback (most recent call last):
+  File "/Users/colinhoffmann/Desktop/mnist/main.py", line 99, in <module>
+    cli()
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/Users/colinhoffmann/Desktop/mnist/main.py", line 65, in train
+    wandb.log({"fig": fig})
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 370, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 333, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1703, in log
+    self._log(data=data, step=step, commit=commit)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1485, in _log
+    self._partial_history_callback(data, step, commit)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1364, in _partial_history_callback
+    self._backend.interface.publish_partial_history(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 568, in publish_partial_history
+    data = history_dict_to_json(run, data, step=user_step, ignore_copy_err=True)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/data_types/utils.py", line 52, in history_dict_to_json
+    payload[key] = val_to_json(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/data_types/utils.py", line 80, in val_to_json
+    val = Plotly.make_plot_media(val)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/sdk/data_types/plotly.py", line 49, in make_plot_media
+    val = util.matplotlib_to_plotly(val)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/util.py", line 629, in matplotlib_to_plotly
+    tools = get_module(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/wandb/util.py", line 378, in get_module
+    raise wandb.Error(required)
+wandb.errors.Error: plotly is required to log interactive plots, install with: `pip install plotly` or convert the plot to an image with `wandb.Image(plt)`

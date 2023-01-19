@@ -4,6 +4,7 @@ from torch import optim
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 import matplotlib.pyplot as plt
+import wandb
 
 import click
 
@@ -22,7 +23,9 @@ def train(lr):
     print("Training day and night")
     print(lr)
 
-    model = MyAwesomeModel().train()
+    wandb.init()
+
+    model = MyAwesomeModel()
     train_data, _ = mnist()
     images, labels = train_data
     train_set = TensorDataset(images, labels)
@@ -36,6 +39,10 @@ def train(lr):
     num_epochs = 10
     loss_history = []
 
+    wandb.watch(model, log_freq=100)
+
+    model.train()
+
     for e in range(num_epochs):
         loss = 0
         print(e + 1)
@@ -46,12 +53,16 @@ def train(lr):
             loss.backward()
             optimizer.step()
             loss = +loss.detach().cpu().item()
+        wandb.log({"loss": loss})
         print(loss)
         loss_history.append(loss)
 
+    fig = plt.figure()
     plt.plot(loss_history)
     figure_path = "figures/train_loss.jpeg"
     plt.savefig(figure_path)
+
+    wandb.log({"fig": fig})
 
     model_path = "models/trained_model.pt"
     torch.save(model, model_path)
