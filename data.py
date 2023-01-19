@@ -5,10 +5,8 @@ import torch
 
 
 def mnist():
-    _TEST_ROOT = os.path.dirname(__file__)  # root of test folder
-    _PROJECT_ROOT = os.path.dirname(_TEST_ROOT)  # root of project
-    _PATH_DATA = os.path.join(_PROJECT_ROOT, "data")  # root of data
-    l = sorted(os.listdir(_PATH_DATA))
+    path = "data/"
+    l = sorted(os.listdir(path))
     trainfile = [i for i in l if i.startswith("train")]
     testfile = [i for i in l if i.startswith("test")]
 
@@ -16,12 +14,12 @@ def mnist():
     train_labels, test_labels = np.empty([0]), np.empty([0])
 
     for file in trainfile:
-        data = np.load(_PATH_DATA + file)
+        data = np.load(path + file)
         train_images = np.concatenate([train_images, data["images"]])
         train_labels = np.concatenate([train_labels, data["labels"]])
 
     for file in testfile:
-        data = np.load(_PATH_DATA + file)
+        data = np.load(path + file)
         test_images = np.concatenate([test_images, data["images"]])
         test_labels = np.concatenate([test_labels, data["labels"]])
 
