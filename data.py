@@ -4,8 +4,7 @@ import numpy as np
 import torch
 
 
-def mnist():
-    path = "data/"
+def mnist(path="data/"):
     l = sorted(os.listdir(path))
     trainfile = [i for i in l if i.startswith("train")]
     testfile = [i for i in l if i.startswith("test")]

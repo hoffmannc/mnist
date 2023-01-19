@@ -6,7 +6,7 @@ from data import mnist
 
 
 def test_data():
-    train_data, test_data = mnist()
+    train_data, test_data = mnist(path="data_test/")
     train_images, train_labels = train_data
     test_images, test_labels = test_data
 
